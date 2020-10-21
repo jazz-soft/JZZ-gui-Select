@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+<title>JZZ-gui-Select test</title>
+<script src="node_modules/jzz/javascript/JZZ.js"></script>
+<script src="node_modules/jzz-midi-smf/javascript/JZZ.midi.SMF.js"></script>
+<script src="node_modules/jzz-gui-player/javascript/JZZ.gui.Player.js"></script>
+<script src="node_modules/jzz-input-kbd/javascript/JZZ.input.Kbd.js"></script>
+<script src="node_modules/jzz-synth-tiny/javascript/JZZ.synth.Tiny.js"></script>
+<script src="javascript/JZZ.gui.Select.js"></script>
+</head>
+
+<body>
+<h1>JZZ-gui-Select test</h1>
+<p id=content>Please enable JavaScript!</p>
+<p id=player_space></p>
+<p id=piano_space></p>
+<p><a href=https://jazz-soft.net>https://jazz-soft.net</a></p>
+<script>
+var content = document.getElementById('content');
+content.innerHTML = 'Please run `<tt>npm install</tt>` !';
+JZZ();
+content.innerHTML = '<label for=sel_in>MIDI In:</label> <select id=sel_in></select> &xrArr; <label for=sel_out>MIDI Out:</label> <select id=sel_out></select>';
+
+// Create virtual MIDI ports
+var piano = JZZ.input.Kbd({ at: 'piano_space' });
+JZZ.addMidiIn('HTML Piano In', piano);
+JZZ.addMidiOut('HTML Piano Out', piano);
+
+var player = JZZ.gui.Player({ at: 'player_space', file: true, midi: false });
+
+JZZ.synth.Tiny.register('Web Audio');
+
+</script>
+
+</body>
+</html>
