@@ -28,8 +28,14 @@ JZZ.addMidiIn('HTML Piano In', piano);
 JZZ.addMidiOut('HTML Piano Out', piano);
 
 var player = JZZ.gui.Player({ at: 'player_space', file: true, midi: false });
+JZZ.addMidiIn('MIDI Player', player);
 
 JZZ.synth.Tiny.register('Web Audio');
+
+// MIDI pickers
+var input = JZZ.gui.SelectMidiIn({ at: 'sel_in' });
+var output = JZZ.gui.SelectMidiOut({ at: 'sel_out' });
+input.connect(output);
 
 </script>
 
