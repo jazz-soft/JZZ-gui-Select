@@ -37,6 +37,21 @@
     this._sel = param.at;
     JZZ().and(function() {
       _populate(self._sel, this.info().inputs);
+      self._sel.addEventListener('change', function() {
+        var name = self._sel.options[self._sel.selectedIndex].value;
+        if (name == self._name) return;
+        JZZ().openMidiIn(name).or(function() {
+console.log('Cannot connect', name);
+        }).and(function() {
+          if (self._port) {
+            self._port.disconnect(self);
+            self._port.close();
+          }
+          self._port = this;
+          self._port.connect(self);
+          self._name = name;
+        });
+      });
     });
   }
   SelectMidiIn.prototype = new JZZ.Widget();
@@ -49,6 +64,21 @@
     this._sel = param.at;
     JZZ().and(function() {
       _populate(self._sel, this.info().outputs);
+      self._sel.addEventListener('change', function() {
+        var name = self._sel.options[self._sel.selectedIndex].value;
+        if (name == self._name) return;
+        JZZ().openMidiOut(name).or(function() {
+console.log('Cannot connect', name);
+        }).and(function() {
+          if (self._port) {
+            self.disconnect(self._port);
+            self._port.close();
+          }
+          self._port = this;
+          self.connect(self._port);
+          self._name = name;
+        });
+      });
     });
   }
   SelectMidiOut.prototype = new JZZ.Widget();

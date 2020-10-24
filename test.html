@@ -23,14 +23,14 @@ JZZ();
 content.innerHTML = '<label for=sel_in>MIDI In:</label> <select id=sel_in></select> &xrArr; <label for=sel_out>MIDI Out:</label> <select id=sel_out></select>';
 
 // Create virtual MIDI ports
-var piano = JZZ.input.Kbd({ at: 'piano_space' });
-JZZ.addMidiIn('HTML Piano In', piano);
-JZZ.addMidiOut('HTML Piano Out', piano);
-
-var player = JZZ.gui.Player({ at: 'player_space', file: true, midi: false });
+var player = JZZ.gui.Player({ at: 'player_space', file: true, midi: false, connect: false });
 JZZ.addMidiIn('MIDI Player', player);
 
 JZZ.synth.Tiny.register('Web Audio');
+
+var piano = JZZ.input.Kbd({ at: 'piano_space' });
+JZZ.addMidiIn('HTML Piano In', piano);
+JZZ.addMidiOut('HTML Piano Out', piano);
 
 // MIDI pickers
 var input = JZZ.gui.SelectMidiIn({ at: 'sel_in' });
