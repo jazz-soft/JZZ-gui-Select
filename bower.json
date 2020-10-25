@@ -1,0 +1,29 @@
+{
+  "name": "jzz-gui-select",
+  "description": "Select MIDI port",
+  "authors": [
+    "jazz-soft (https://jazz-soft.net/)"
+  ],
+  "main": "javascript/JZZ.gui.Select.js",
+  "moduleType": [
+    "amd",
+    "node",
+    "globals"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "midi"
+  ],
+  "homepage": "https://github.com/jazz-soft/JZZ-gui-Select",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "minified",
+    "test.*",
+    "Gruntfile.js"
+  ],
+  "dependencies": {
+    "jzz": "^1.1.2"
+  }
+}
