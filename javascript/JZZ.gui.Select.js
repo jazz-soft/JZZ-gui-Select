@@ -19,70 +19,90 @@
       throw 'missing parameter';
     }
     param.at = arg.at;
+    param.none = arg.none || '=== NONE ===';
     if (typeof param.at == 'string') param.at = document.getElementById(param.at);
-    _removeall(param.at);
     return param;
   }
-  function _removeall(sel) {
-    for (var i = sel.options.length - 1; i >= 0; i--) sel.remove(i);
+  function _update(self, ports) {
+    var i;
+    var arr = [self._none];
+    if (ports) for (i = 0; i < ports.length; i++) arr.push(ports[i].name);
+    for (i = self._sel.options.length - 1; i >= 0; i--) self._sel.remove(i);
+    for (i = 0; i < arr.length; i++) self._sel[i] = new Option(arr[i], arr[i], arr[i] == self._name, arr[i] == self._name);
   }
-  function _populate(sel, arr, def) {
-    for (var i = 0; i < arr.length; i++) sel[i] = new Option(arr[i].name, arr[i].name, arr[i].name == def, arr[i].name == def);
+  function _init(self, arg) {
+    var param = _param(arg);
+    self._sel = param.at;
+    self._none = param.none;
+    self.select(self._none);
+    self._sel.addEventListener('change', function() { self.select(self._sel.options[self._sel.selectedIndex].value); });
   }
 
   function SelectMidiIn(arg) {
     if (!(this instanceof SelectMidiIn)) return new SelectMidiIn(arg);
     var self = this;
-    var param = _param(arg);
-    this._sel = param.at;
-    JZZ().and(function() {
-      _populate(self._sel, this.info().inputs);
-      self._sel.addEventListener('change', function() {
-        var name = self._sel.options[self._sel.selectedIndex].value;
-        if (name == self._name) return;
-        JZZ().openMidiIn(name).or(function() {
-console.log('Cannot connect', name);
-        }).and(function() {
-          if (self._port) {
-            self._port.disconnect(self);
-            self._port.close();
-          }
-          self._port = this;
-          self._port.connect(self);
-          self._name = name;
-        });
-      });
-    });
+    _init(self, arg);
   }
   SelectMidiIn.prototype = new JZZ.Widget();
   SelectMidiIn.prototype.constructor = SelectMidiIn;
+  SelectMidiIn.prototype.select = function(arg) {
+    var self = this;
+    if (arg == self._name) return;
+    if (arg == self._none) {
+      if (self._port) {
+        self._port.disconnect(self);
+        self._port.close();
+      }
+      self._port = undefined;
+      self._name = self._none;
+      _update(self, JZZ().info().inputs);
+    }
+    JZZ().openMidiIn(arg).or(function() {
+      _update(self, JZZ().info().inputs);
+    }).and(function() {
+      if (self._port) {
+        self._port.disconnect(self);
+        self._port.close();
+      }
+      self._port = this;
+      self._name = this.info().name;
+      self._port.connect(self);
+      _update(self, JZZ().info().inputs);
+    });
+  };
 
   function SelectMidiOut(arg) {
     if (!(this instanceof SelectMidiOut)) return new SelectMidiOut(arg);
     var self = this;
-    var param = _param(arg);
-    this._sel = param.at;
-    JZZ().and(function() {
-      _populate(self._sel, this.info().outputs);
-      self._sel.addEventListener('change', function() {
-        var name = self._sel.options[self._sel.selectedIndex].value;
-        if (name == self._name) return;
-        JZZ().openMidiOut(name).or(function() {
-console.log('Cannot connect', name);
-        }).and(function() {
-          if (self._port) {
-            self.disconnect(self._port);
-            self._port.close();
-          }
-          self._port = this;
-          self.connect(self._port);
-          self._name = name;
-        });
-      });
-    });
+    _init(self, arg);
   }
   SelectMidiOut.prototype = new JZZ.Widget();
   SelectMidiOut.prototype.constructor = SelectMidiOut;
+  SelectMidiOut.prototype.select = function(arg) {
+    var self = this;
+    if (arg == self._name) return;
+    if (arg == self._none) {
+      if (self._port) {
+        self.disconnect(self._port);
+        self._port.close();
+      }
+      self._port = undefined;
+      self._name = self._none;
+      _update(self, JZZ().info().outputs);
+    }
+    JZZ().openMidiOut(arg).or(function() {
+      _update(self, JZZ().info().outputs);
+    }).and(function() {
+      if (self._port) {
+        self.disconnect(self._port);
+        self._port.close();
+      }
+      self._port = this;
+      self._name = this.info().name;
+      self.connect(self._port);
+      _update(self, JZZ().info().outputs);
+    });
+  };
 
   JZZ.gui.SelectMidiIn = SelectMidiIn;
   JZZ.gui.SelectMidiOut = SelectMidiOut;
