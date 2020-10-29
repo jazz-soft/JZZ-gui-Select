@@ -14,7 +14,7 @@ MIDI Input/Output pickers
 ## Install
 
 `npm install jzz-gui-select --save`  
-or `bower install jzz-gui-select`  
+or `bower install bower install jazz-soft/JZZ-gui-Select`  
 or `yarn add jzz-gui-select`  
 or get the full development version and minified scripts from [**GitHub**](https://github.com/jazz-soft/JZZ-gui-Select)
 
@@ -73,6 +73,35 @@ var midi_out = JZZ.gui.SelectMidiOut({ at: 'select_midi_out' });
 midi_in.connect(midi_out);
 </script>
 ```
+
+## API
+
+All calls are identical for both Input/Output pickes
+except of the `In`/`Out` name suffixes where appropriate.
+
+##### constructor
+`JZZ.gui.SelectMidiIn(options)`  
+`JZZ.gui.SelectMidiOut(options)`
+
+Can be used with or without the `new` keyword.  
+`options` is the obect with the following properties:
+- `at:` (required) HTML DOM &lt;SELECT&gt; object to be associated with the picker.  
+Either a DOM obect or its string ID.
+- `none:` text string for the "no port opened" option.  
+Default: `'=== NONE ==='`
+
+##### select
+`midi_in.select(arg)`  
+`midi_out.select(arg)`
+
+Programmatically select MIDI port.  
+`arg` is an option name or any other argument accepted
+by `JZZ().openMidiIn(arg)` or `JZZ().openMidiOut(arg)`.  
+e.g.:  
+`midi_in.select('=== NONE ===');` - select "no port" option
+and close the current port if it was open.  
+`midi_out.select();` - open the default MIDI-Out port.
+
 
 ## More information
 
