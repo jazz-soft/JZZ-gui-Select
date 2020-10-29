@@ -98,7 +98,7 @@ Programmatically select MIDI port.
 `arg` is an option name or any other argument accepted
 by `JZZ().openMidiIn(arg)` or `JZZ().openMidiOut(arg)`.  
 *e.g.:*  
-`midi_in.select('=== NONE ===');` - select "no port" option
+`midi_in.select('=== NONE ===');` - select the "no port" option
 and close the current port if it was open.  
 `midi_out.select();` - open the default MIDI-Out port.
 
