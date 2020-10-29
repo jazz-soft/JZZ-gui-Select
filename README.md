@@ -14,7 +14,7 @@ MIDI Input/Output pickers
 ## Install
 
 `npm install jzz-gui-select --save`  
-or `bower install bower install jazz-soft/JZZ-gui-Select`  
+or `bower install jazz-soft/JZZ-gui-Select`  
 or `yarn add jzz-gui-select`  
 or get the full development version and minified scripts from [**GitHub**](https://github.com/jazz-soft/JZZ-gui-Select)
 
@@ -76,7 +76,7 @@ midi_in.connect(midi_out);
 
 ## API
 
-All calls are identical for both Input/Output pickes
+All calls are identical for both Input/Output pickers
 except of the `In`/`Out` name suffixes where appropriate.
 
 ##### constructor
@@ -97,11 +97,18 @@ Default: `'=== NONE ==='`
 Programmatically select MIDI port.  
 `arg` is an option name or any other argument accepted
 by `JZZ().openMidiIn(arg)` or `JZZ().openMidiOut(arg)`.  
-e.g.:  
+*e.g.:*  
 `midi_in.select('=== NONE ===');` - select "no port" option
 and close the current port if it was open.  
 `midi_out.select();` - open the default MIDI-Out port.
 
+##### standard calls
+MIDI Input/Output pickers are regular JZZ MIDI nodes,
+and therefore, can be used with all [standard calls](https://jazz-soft.net/doc/JZZ/reference.html).  
+*e.g.:*  
+`midi_in.connect(function(msg) { console.log('MIDI received: ' + msg); });`  
+`midi_out.noteOn(0, 'C#5', 127).wait(500).noteOff(0, 'C#5');`  
+etc...
 
 ## More information
 
