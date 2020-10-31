@@ -12,7 +12,7 @@ MIDI Input/Output pickers for HTML proects
 [![npm](https://img.shields.io/npm/dt/jzz-gui-select.svg)](https://www.npmjs.com/package/jzz-gui-select)
 
 [![MIDI pickers](https://raw.githubusercontent.com/jazz-soft/JZZ-gui-Select/main/media/jzz-gui-select.png)](https://jazz-soft.github.io/modules/select/index.html)  
-See the [**demo**](https://jazz-soft.github.io/modules/select/index.htmlSee)...
+See the [**demo**](https://jazz-soft.github.io/modules/select/index.html)...
 
 ## Install
 
