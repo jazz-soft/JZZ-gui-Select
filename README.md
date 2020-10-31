@@ -1,6 +1,6 @@
 # JZZ-gui-Select
 
-MIDI Input/Output pickers
+MIDI Input/Output pickers for HTML proects
 
 ![Firefox](https://jazz-soft.github.io/img/firefox.jpg)
 ![Chrome](https://jazz-soft.github.io/img/chrome.jpg)
@@ -10,6 +10,9 @@ MIDI Input/Output pickers
 ![Edge](https://jazz-soft.github.io/img/edgc.jpg)  
 [![npm](https://img.shields.io/npm/v/jzz-gui-select.svg)](https://www.npmjs.com/package/jzz-gui-select)
 [![npm](https://img.shields.io/npm/dt/jzz-gui-select.svg)](https://www.npmjs.com/package/jzz-gui-select)
+
+[![MIDI pickers](https://raw.githubusercontent.com/jazz-soft/JZZ-gui-Select/main/media/jzz-gui-select.png)](https://jazz-soft.github.io/modules/select/index.html)  
+See the [**demo**](https://jazz-soft.github.io/modules/select/index.htmlSee)...
 
 ## Install
 
