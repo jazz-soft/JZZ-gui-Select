@@ -1,6 +1,6 @@
 # JZZ-gui-Select
 
-MIDI Input/Output pickers for HTML proects
+MIDI Input/Output pickers for HTML projects
 
 ![Firefox](https://jazz-soft.github.io/img/firefox.jpg)
 ![Chrome](https://jazz-soft.github.io/img/chrome.jpg)
