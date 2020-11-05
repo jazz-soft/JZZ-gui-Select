@@ -101,26 +101,36 @@ Programmatically select MIDI port.
 `arg` is an option name or any other argument accepted
 by `JZZ().openMidiIn(arg)` or `JZZ().openMidiOut(arg)`.  
 *e.g.:*  
-`midi_in.select('=== NONE ===');` - select the "no port" option
-and close the current port if it was open.  
-`midi_out.select();` - open the default MIDI-Out port.
+```js
+// select the "no port" option and close the current port if it was open:
+midi_in.select('=== NONE ===');
+midi_out.select(); // open the default MIDI-Out port.
+```
 
 ##### standard calls
 MIDI Input/Output pickers are regular JZZ MIDI nodes,
 and therefore, can be used with all [standard calls](https://jazz-soft.net/doc/JZZ/reference.html).  
 *e.g.:*  
-`midi_in.connect(function(msg) { console.log('MIDI received: ' + msg); });`  
-`midi_out.noteOn(0, 'C#5', 127).wait(500).noteOff(0, 'C#5');`  
-etc...
+```js
+midi_in.connect(function(msg) { console.log('MIDI received: ' + msg); });
+midi_out.noteOn(0, 'C#5', 127).wait(500).noteOff(0, 'C#5');
+// etc...
+```
 
 ##### user hooks
 `midi_in.onSelect(name)`  
 `midi_out.onSelect(name)`
 
-Called when the MIDI port is successfully selected; `name` is the port name. 
-*e.g.:*  
-`midi_in.onSelect = function(name) { console.log('MIDI-In selected:', name); };`  
-`midi_out.onSelect = function() { this.noteOn(0, 'C#5', 127).wait(500).noteOff(0, 'C#5'); };`
+Called when the MIDI port is successfully selected; `name` is the port name.  
+*e.g.:*
+```js
+midi_in.onSelect = function(name) {
+  console.log('MIDI-In selected:', name);
+};
+midi_out.onSelect = function() {
+  this.noteOn(0, 'C#5', 127).wait(500).noteOff(0, 'C#5');
+};
+```
 
 ## More information
 
