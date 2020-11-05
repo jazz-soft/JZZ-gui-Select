@@ -72,7 +72,7 @@ require(['JZZ', 'JZZ.gui.Select'], function(JZZ, select) {
 <script>
 var midi_in = JZZ.gui.SelectMidiIn({ at: 'select_midi_in' });
 var midi_out = JZZ.gui.SelectMidiOut({ at: 'select_midi_out' });
-// directect MIDI stream from midi_in to midi_out:
+// direct MIDI stream from midi_in to midi_out:
 midi_in.connect(midi_out);
 </script>
 ```
