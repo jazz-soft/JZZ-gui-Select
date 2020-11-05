@@ -113,6 +113,15 @@ and therefore, can be used with all [standard calls](https://jazz-soft.net/doc/J
 `midi_out.noteOn(0, 'C#5', 127).wait(500).noteOff(0, 'C#5');`  
 etc...
 
+##### user hooks
+`midi_in.onSelect(name)`  
+`midi_out.onSelect(name)`
+
+Called when the MIDI port is successfully selected; `name` is the port name. 
+*e.g.:*  
+`midi_in.onSelect = function(name) { console.log('MIDI-In selected:', name); };`  
+`midi_out.onSelect = function() { this.noteOn(0, 'C#5', 127).wait(500).noteOff(0, 'C#5'); };`
+
 ## More information
 
 Please visit [**https://jazz-soft.net**](https://jazz-soft.net) for more information.  

@@ -37,6 +37,7 @@
     self.select(self._none);
     self._sel.addEventListener('change', function() { self.select(self._sel.options[self._sel.selectedIndex].value); });
   }
+  function _onSelect(self, name) { setTimeout(function() { self.onSelect(name); }, 0); }
 
   function SelectMidiIn(arg) {
     if (!(this instanceof SelectMidiIn)) return new SelectMidiIn(arg);
@@ -45,6 +46,7 @@
   }
   SelectMidiIn.prototype = new JZZ.Widget();
   SelectMidiIn.prototype.constructor = SelectMidiIn;
+  SelectMidiIn.prototype.onSelect = function() {};
   SelectMidiIn.prototype.select = function(arg) {
     var self = this;
     if (arg == self._name) return;
@@ -56,6 +58,7 @@
       self._port = undefined;
       self._name = self._none;
       _update(self, JZZ().info().inputs);
+      _onSelect(self, self._name);
     }
     JZZ().openMidiIn(arg).or(function() {
       _update(self, JZZ().info().inputs);
@@ -68,6 +71,7 @@
       self._name = this.info().name;
       self._port.connect(self);
       _update(self, JZZ().info().inputs);
+      _onSelect(self, self._name);
     });
   };
 
@@ -78,6 +82,7 @@
   }
   SelectMidiOut.prototype = new JZZ.Widget();
   SelectMidiOut.prototype.constructor = SelectMidiOut;
+  SelectMidiOut.prototype.onSelect = function() {};
   SelectMidiOut.prototype.select = function(arg) {
     var self = this;
     if (arg == self._name) return;
@@ -89,6 +94,7 @@
       self._port = undefined;
       self._name = self._none;
       _update(self, JZZ().info().outputs);
+      _onSelect(self, self._name);
     }
     JZZ().openMidiOut(arg).or(function() {
       _update(self, JZZ().info().outputs);
@@ -101,6 +107,7 @@
       self._name = this.info().name;
       self.connect(self._port);
       _update(self, JZZ().info().outputs);
+      _onSelect(self, self._name);
     });
   };
 
