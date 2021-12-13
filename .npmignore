@@ -2,7 +2,7 @@ minified
 media
 test*
 .*
+coverage
 bower.json
 Gruntfile.js
-*.html
-*.bat
+!test
