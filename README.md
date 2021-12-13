@@ -10,6 +10,8 @@ MIDI Input/Output pickers for HTML projects
 ![Edge](https://jazz-soft.github.io/img/edgc.jpg)  
 [![npm](https://img.shields.io/npm/v/jzz-gui-select.svg)](https://www.npmjs.com/package/jzz-gui-select)
 [![npm](https://img.shields.io/npm/dt/jzz-gui-select.svg)](https://www.npmjs.com/package/jzz-gui-select)
+[![build](https://github.com/jazz-soft/JZZ-gui-Select/actions/workflows/build.yml/badge.svg)](https://github.com/jazz-soft/JZZ-gui-Select/actions)
+[![Coverage Status](https://coveralls.io/repos/github/jazz-soft/JZZ-gui-Select/badge.svg?branch=main)](https://coveralls.io/github/jazz-soft/JZZ-gui-Select?branch=main)
 
 [![MIDI pickers](https://raw.githubusercontent.com/jazz-soft/JZZ-gui-Select/main/media/jzz-gui-select.png)](https://jazz-soft.github.io/modules/select/index.html)  
 See the [**demo**](https://jazz-soft.github.io/modules/select/index.html)...
