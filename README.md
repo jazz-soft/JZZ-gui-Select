@@ -19,7 +19,6 @@ See the [**demo**](https://jazz-soft.github.io/modules/select/index.html)...
 ## Install
 
 `npm install jzz-gui-select --save`  
-or `bower install jazz-soft/JZZ-gui-Select`  
 or `yarn add jzz-gui-select`  
 or get the full development version and minified scripts from [**GitHub**](https://github.com/jazz-soft/JZZ-gui-Select)
 
