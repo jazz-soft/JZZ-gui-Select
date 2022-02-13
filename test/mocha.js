@@ -2,6 +2,8 @@ var JSDOM = require('jsdom').JSDOM;
 var WMT =  require('web-midi-test');
 var assert = require('assert');
 
+var midi_in = new WMT.MidiSrc('VIRTUAL MIDI-In');
+midi_in.connect();
 var midi_out = new WMT.MidiDst('VIRTUAL MIDI-Out');
 midi_out.connect();
 

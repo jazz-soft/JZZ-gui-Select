@@ -4,6 +4,7 @@
 <title>JZZ.gui.Select test</title>
 <script src="../node_modules/jzz/javascript/JZZ.js"></script>
 <script src=".instrumented/JZZ.gui.Select.js"></script>
+<script src=".instrumented/JZZ.gui.Select.js"></script>
 </head>
 
 <body>
@@ -15,8 +16,12 @@
 </p>
 
 <script><!--
-var midi_in = JZZ.gui.SelectMidiOut({ at: 'midi_in' });
+var midi_in = JZZ.gui.SelectMidiIn({ at: 'midi_in' });
 var midi_out = JZZ.gui.SelectMidiOut({ at: 'midi_out' });
+midi_in.select(0);
+midi_in.select(0);
+midi_out.select(0);
+midi_out.select(0);
 --></script>
 
 </body>
