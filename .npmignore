@@ -4,4 +4,3 @@ media
 test*
 coverage
 Gruntfile.js
-!test

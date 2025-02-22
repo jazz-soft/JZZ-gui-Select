@@ -44,6 +44,7 @@
     if (!(this instanceof SelectMidiIn)) return new SelectMidiIn(arg);
     var self = this;
     _init(self, arg);
+    JZZ().onChange(function() { _update(self, JZZ().info().inputs); });
   }
   SelectMidiIn.prototype = new JZZ.Widget();
   SelectMidiIn.prototype.constructor = SelectMidiIn;
@@ -80,6 +81,7 @@
     if (!(this instanceof SelectMidiOut)) return new SelectMidiOut(arg);
     var self = this;
     _init(self, arg);
+    JZZ().onChange(function() { _update(self, JZZ().info().outputs); });
   }
   SelectMidiOut.prototype = new JZZ.Widget();
   SelectMidiOut.prototype.constructor = SelectMidiOut;
