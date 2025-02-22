@@ -4,3 +4,4 @@ media
 test*
 coverage
 Gruntfile.js
+eslint.config.mjs
